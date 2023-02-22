@@ -14,11 +14,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: David Ochoa
-description: A bold typographic theme inspired by Swiss design.
+description: Yet another portfolio page.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://devicemxl.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_repo: jekyll # the GitHub repo name for your project
-github_username: jekyll
+github_repo: Home # the GitHub repo name for your project
+github_username: devicemxl
 
 # Optional social link, you can choose from the following options:
 # twitter (default), instagram, medium, or dribbble
