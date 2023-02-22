@@ -4,18 +4,15 @@ title: About
 permalink: /about/
 ---
 
-Swiss is a bold Jekyll theme inspired by Swiss design and the works of Massimo Vignelli. This theme lends itself well to sites heavy on written content.
+I aspire to be a MadMath: trying advanced algorithms like 1 + 1, print ("hello world")...
 
-### Features:
-* Mobile-first design ensures this theme performs fastest on mobile while scaling elegantly to desktop-size screens.
-* Designed for blogs and sites heavy on written content, with bold typography styles, homepage summaries, and previous/next snippets.
-* Supports a wide range of HTML elements and markdown.
-* Flexible styles that can be reused for customization without adding additional CSS.
-* Simple styling for code snippets (if you want something with syntax highlighting, checkout ....)
-* Dynamically generated navigation links. See docs below for adding pages with specific post category for-loops.
+I working as a Data consultant, i studied Architecture and Urbanism, Electromechanical Technician as well;
+in the 80's and early 90's Digital Graphic Design and Programmer.
+Patterns and Coding has been my hobby since I was a kid.
 
-## Themes
+### Stack:
+* Python/Julia
+* MS-SQL/MySQL/Spark
+* Qgis/ARCgis
+* XML:RDF/HTML/JS/CSS.
 
-## Browser Support
-
-## Installation
