@@ -15,4 +15,3 @@ Patterns and Coding has been my hobby since I was a kid.
 * MS-SQL/MySQL/Spark
 * Qgis/ARCgis
 * XML:RDF/HTML/JS/CSS.
-
