@@ -101,6 +101,10 @@ a {
     padding: 1rem;
 }
 
+.hero article img {
+    align-self: center;
+    text-align: end;
+}
 .history {
     padding: 1rem;
     /**/
