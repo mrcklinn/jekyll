@@ -129,7 +129,6 @@ label {
   border-radius: 5px;
   border-color: var(--gray-050);
   border-width: 0.5px;
-  padding: auto;
 }
 
 .q_box input[type="text"] {
@@ -148,7 +147,6 @@ select {
   border-radius: 5px;
   border-color: var(--gray-050);
   border-width: 0.5px;
-  padding: auto;
   height: var(--total-input-height);
   max-width: 100%; /* useful when width is set to anything other than 100% */
 
