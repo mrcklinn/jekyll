@@ -115,6 +115,9 @@ label {
   align-items: flex-start;
   justify-content: center;
 }
+
+
+.q_box textarea,
 .q_box select,
 .q_box input {
   font-size: 14px;
@@ -129,8 +132,9 @@ label {
   line-height: var(--total-input-height);
 }
 
-.q_box input[type="textarea"] {
-  line-height: calc(var(--total-input-height) * 3);
+
+textarea {
+  line-height: calc(var(--total-input-height) * 1.5);
 }
 
 select {

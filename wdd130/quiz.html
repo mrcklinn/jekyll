@@ -29,7 +29,7 @@
             <a class="numeracion">1. </a>
             <a class="texto">What does the acronym CSS stands for?</a>
           </label>
-          <input type="text" id="q1" name="q1" >
+          <input type="text" id="q1" name="q1" />
         </div>
         <br />
 
@@ -37,9 +37,11 @@
         <div class="q_box">
           <label for="q2">
             <a class="numeracion">2. </a>
-            <a class="texto">How are id and class attributes selected in CSS?</a>
+            <a class="texto"
+              >How are id and class attributes selected in CSS?</a
+            >
           </label>
-          <input type="textarea" id="q2" name="q2" >
+          <textarea  id="q2" name="q2" ></textarea>
         </div>
         <br />
 
@@ -48,30 +50,37 @@
             <a class="numeracion">3. </a>
             <a class="texto">Which of the following is a valid CSS comment?</a>
           </label>
-        <select name="q3" id="q3">
-          <option value="" selected>Choose One...</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-        </select>
+          <select name="q3" id="q3">
+            <option value="" selected>Choose One...</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+          </select>
         </div>
         <br />
 
         <!-- TEXT BOX -->
         <div class="q_box">
           <label for="q4">
-            <p>
-            <a class="numeracion">2. </a>
-            <a class="texto">What is the button margin given this declaration?</a>
-          </p><br />
+            <div>
+              <a class="numeracion">2. </a>
+              <a class="texto">What is the button margin given this declaration?</a>
+            </div>
+            <br />
           </label>
-            <div class="gray_box">margin: 10px 5px 15px;</div>
-          <input type="text" id="q4" name="q4" >
+          <div class="gray_box">margin: 10px 5px 15px;</div>
+          <input type="text" id="q4" name="q4" />
         </div>
         <br />
 
         <div class="q_box">
-          <input type="submit" name="btn" id="btn"  value="Submit Quiz" accesskey="s" />
+          <input
+            type="submit"
+            name="btn"
+            id="btn"
+            value="Submit Quiz"
+            accesskey="s"
+          />
         </div>
         <br />
       </div>
