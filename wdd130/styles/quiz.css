@@ -100,10 +100,14 @@ label {
   justify-content: center;
 }
 
+.numeracion,
 .title a {
   color: var(--blue-160);
-  font-family: "Times New Roman", Times, serif;
   font-weight: 500;
+}
+
+.title a {
+  font-family: "Times New Roman", Times, serif;
   font-size: 22px;
   height: calc(var(--total-input-width) - 50px);
 }
