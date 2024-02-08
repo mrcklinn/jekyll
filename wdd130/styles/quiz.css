@@ -120,7 +120,6 @@ label {
   justify-content: center;
 }
 
-
 .q_box textarea,
 .q_box select,
 .q_box input {
@@ -131,7 +130,8 @@ label {
   border-width: 0.5px;
 }
 
-.q_box input[type="text"] {
+.q_box input[type="text"],
+.q_box input[type="number"] {
   line-height: var(--total-input-height);
 }
 
