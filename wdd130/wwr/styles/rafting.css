@@ -265,6 +265,9 @@ TEAM SECTION
 .gmap_canvas iframe {
   height: 35vh;
   width: 80vh;
+  overflow: hidden;
+  border: 0 transparent!important;
+  margin: 0;
 }
 
 .map_object {
