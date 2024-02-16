@@ -344,7 +344,7 @@ fieldset{
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: baseline;
+  align-items: stretch;
 }
 
 .form_contents input[type="text"],
