@@ -154,7 +154,6 @@
             <div class="gmap_canvas">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d175698.61216334513!2d-115.58148231200681!3d32.62262458586787!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d7700ca877ddd3%3A0xd40033a0e5cdf59a!2sMexicali%2C%20Baja%20California!5e0!3m2!1sen!2smx!4v1708049315256!5m2!1sen!2smx"
-                style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
@@ -172,27 +171,47 @@
       <section class="contact_form_container">
         <h2>Send Us a Message</h2>
         <p>Send us a message and we'll respond within 24 hours.</p>
+        <br>
         <form action="#">
           <div class="form_contents">
+
+            <div class=" full_long">
+              <fieldset id="Purpose">
+                <legend>Purpose of the message</legend>
+                <label>
+                    <input type="radio" id="Purpose1" name="Purpose" value="General Inquiry"> General Inquiry
+                </label>
+                <label>
+                    <input type="radio" id="Purpose2" name="Purpose" value="Reservation Question"> Reservation Question
+                </label>
+                <label>
+                    <input type="radio" id="Purpose3" name="Purpose" value="Website Suggestion"> Website Suggestion
+                </label>
+            </fieldset>
+            </div>
+
             <div class="input_group">
               <label for="text">Name</label>
               <input type="text"  id="text" name="text" value=" Your name " >
-              <br >
             </div>
             <div class="input_group">
               <label for="email">email</label>
               <input type="email"  id="email" name="email" value=" Your email address" >
-              <br >
             </div>
             <div class="input_group">
               <label for="textarea" >Message</label>
               <textarea title="xx" id="textarea"  name="textarea" ></textarea>
+            </div>
+            <div class=" full_long">
+              <label for="check" >Please subscribe me to the monthly newsletter</label>
+              <input type="checkbox" id="check"  name="textarea" >
               <br >
             </div>
             
-          <input type="submit" >
+          <input type="submit" id="submit" value="Contact Us" >
           </div>
         </form>
+
       </section>
     </main>
     <footer>
