@@ -372,8 +372,7 @@ fieldset{
 
 
 .form_contents input[type="submit"] {
-  width: 10vw;
-  max-width: 132px;
+  
   height: 3vh;
   max-height: 30px;
   margin: 10px;
@@ -385,6 +384,8 @@ fieldset{
   transition: box-shadow 0.3s ease-in-out;
   color: var(--accent2-color);
   font-weight: 900;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .form_contents textarea:hover,
