@@ -826,7 +826,7 @@ li.current h3 + p,
 li.current p + .btn,
 li.current:after {
   opacity: 1;
-  transition-delay: 0.5ss;
+  transition-delay: 0.5s;
   transform: translate3d(0, 0, 0);
 }
 
