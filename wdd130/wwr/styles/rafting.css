@@ -11,7 +11,7 @@ https://commons.wikimedia.org/wiki/File:Vall%C3%A9e_de_l%27Ubaye_Rafting.jpg
   --secondary-color: #98a6a2;
   --accent1-color: #9b0713;
   --accent2-color: #e6b31a;
-  --accent2-color-translucid: #e6b31add;
+  --accent2-color-translucid: #e6b31ab0;
   --accent3-color: #545956;
   --heading-font: "Glegoo", serif;
   --paragraph-font: "Montserrat", sans-serif;
@@ -40,7 +40,7 @@ header {
   display: grid;
   grid-template-columns: 120px 1fr 2fr;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--primary-color);
   max-width: 1000px;
 }
 
@@ -86,84 +86,78 @@ Hero properties
   padding: 0;
   margin: 0;
   margin-bottom: 50px;
-  /* Make the div container relative */
   position: relative;
-  /* Set the height to 100% of the viewport */
   height: 80vh;
-  width: 100vw;
   overflow: hidden;
-  /**/
-  background-image: url(../images/hero.png);
+  background-image: url(../images/action.jpg);
+  background-position-x: left;
+  background-position-y: top;
   background-size: cover;
   resize: both;
-  /**/
+  align-content: center;
+  top: 0;
+  width: 100%;
+  font-family: var(--heading-font);
+  color: var(--accent1-color);
+  opacity: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-content: center;
   justify-content: center;
   align-items: center;
 }
 
-.hero_contact {
+.hero_contact,
+.hero_trip {
   padding: 0;
   margin: 0;
   margin-bottom: 50px;
-  /* Make the div container relative */
   position: relative;
-  /* Set the height to 100% of the viewport */
   height: 40vh;
   width: 100vw;
   overflow: hidden;
-  /**/
-  background-image: url(../images/hero.png);
+  background-image: url(../images/action.jpg);
   background-size: cover;
-  background-position-y: bottom;
+  background-position-y: center;
   resize: both;
-  /**/
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-content: center;
   justify-content: center;
   align-items: center;
 }
 
 .hero h1,
+.hero_trip h1, 
 .hero_contact h1 {
   position: absolute;
-  top: -1.3vw;
+  top: 0;
   width: 100%;
-  /**/
   font-family: var(--heading-font);
   color: var(--primary-color);
-  background-color: var(--accent3-color);
-  opacity: 0.8;
-  /**/
+  text-shadow: 0px 0px 3px var(--nav-hover-background-color), 0px 0px 15px var(--accent1-color), 0px 0px 40px var(--accent3-color);
+  opacity: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-content: center;
   justify-content: center;
   align-items: center;
 }
 
-.hero_contact {
-  opacity: 0.6;
-}
 .hero article {
   position: absolute;
   top: 40%;
   width: 70%;
+  max-width: 1000px;
   padding: 1rem;
-  /**/
   background-color: var(--accent2-color-translucid);
-  /**/
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  border-radius: 1vh;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 45px -12px inset, rgba(24, 23, 23, 0.3) 0px 18px 36px -18px inset;
 }
 
 .hero article p {
@@ -174,8 +168,9 @@ Hero properties
 }
 
 .hero article img {
-  align-self: center;
-  text-align: end;
+    align-self: center;
+    text-align: end;
+    border-radius: 1vh;
 }
 
 .history {
@@ -185,6 +180,15 @@ Hero properties
 }
 
 /*
+TRIPS SECTION
+*/
+.verbosity {
+  max-width: 45%;
+  margin: 0 5% 5% 5%;
+}
+
+
+/*
 TEAM SECTION
 */
 
@@ -192,17 +196,53 @@ TEAM SECTION
   display: flex;
   flex-direction: column;
   justify-content: center;
-  top: calc(40vh + 50px);
-  position: absolute;
-  left: 50%;
-  height: 50vh;
   flex-wrap: nowrap;
   align-items: center;
+  position: absolute;
+  height: 60vh;
+  width: 80vw;
+  max-width: 1000px;
+  top: calc(40vh + 50px);
+  left: 50%;
   transform: translate(-50%, -35%) scale(0.9);
+  z-index: 10;
+  border-radius: 1rem;
+  background-image: url(../images/hero.png);
+  background-position-x: right;
+  background-position-y: center;
+  background-color: #ddeee987;
+  background-size: initial;
+  background-blend-mode: hue;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  text-shadow: 0px 0px 3px var(--primary-color), 0px 0px 15px var(--primary-color), 0px 0px 40px var(--primary-color);
+  font-weight: 700;
 }
 
-.team h2 {
-  color: var(--accent1-color);
+.call_to_act {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  position: absolute;
+  height: 50vh;
+  width: 25vw;
+  max-width: 1000px;
+  top: calc(40vh + 50px);
+  left: 70%;
+  transform: translate(-50%, -35%) scale(0.9);
+  z-index: 10;
+  border-radius: 1rem;
+  background-image: url(../images/hero.png);
+  background-position-x: right;
+  background-position-y: bottom;
+  background-color: #ddeee987;
+  background-size: initial;
+  background-blend-mode: hue;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  text-shadow: 0px 0px 3px var(--primary-color), 0px 0px 15px var(--primary-color), 0px 0px 40px var(--primary-color);
+  font-weight: 700;
+  padding: 50px;
 }
 
 .team_content {
@@ -218,13 +258,10 @@ TEAM SECTION
 }
 
 .team_describe {
-  color: var(--accent3-color);
   font-family: var(--paragraph-font);
 }
 
 .team_name {
-  color: var(--accent1-color);
-  font-weight: 700;
   font-family: var(--heading-font);
 }
 
@@ -236,6 +273,36 @@ TEAM SECTION
   border-style: ridge;
   border-width: 0.4vw;
 }
+/* call to action */
+
+.button-wrapper-cta {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.button-cta:hover {
+  background-color: var(--accent2-color);
+  color: var(--nav-hover-background-color);
+  font-weight: 900;
+}
+.button-cta {
+  background-color: #B3282F;
+  color: var(--primary-color);
+  text-shadow: none;
+}
+.cta-button {
+  border: none;
+  border-radius: 3em;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  font-size: 1em;
+  text-decoration: none;
+  padding: 1em 2em;
+  width: auto;
+}
+
+
 
 /* THE MAP */
 
@@ -521,4 +588,294 @@ footer p {
 
 .social_links img:hover {
   filter: saturate(100%);
+}
+
+/*
+
+trips slider
+
+*/
+
+a {
+  text-decoration: none !important;
+  min-width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+}
+
+a,
+button {
+  transition: 0.5s;
+}
+a,
+button,
+input,
+textarea,
+select {
+  outline: none !important;
+}
+
+fieldset {
+  border: 0;
+}
+
+.title,
+.sub_title {
+  font-family: var(--title_font);
+  font-weight: 400;
+  margin: 0;
+}
+
+.flex,
+.fixed_flex {
+  display: flex;
+}
+
+.flex_content {
+  width: 100%;
+  position: relative;
+}
+
+.padding_1x {
+  padding: 1rem;
+}
+
+.padding_2x {
+  padding: 2rem;
+}
+
+.padding_3x {
+  padding: 3rem;
+}
+
+.padding_4x {
+  padding: 4rem;
+}
+
+
+.medium {
+  font-size: 2em;
+}
+
+.small {
+  font-size: 1.3em;
+}
+
+.btn {
+  padding: 1rem;
+  border-radius: 5px;
+  color: var(--white);
+  position: relative;
+  border: 0;
+  text-align: center;
+}
+
+.btn_3 {
+  display: block;
+  position: relative;
+  font-family: var(--default_font);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--accent2-color);
+}
+
+.btn_3:before {
+  content: "";
+  border-radius: 50%;
+  background-color: var(--accent3-color);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  transition: 0.5s;
+  transform: translate(0%, -50%);
+  z-index: -1;
+}
+
+.btn_3:after {
+  content: " >";
+  margin-left: 5px;
+}
+
+.btn_3:hover:before {
+  border-radius: 40px;
+  width: 100%;
+}
+
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 800px;
+  margin-top: 10vh;
+}
+
+
+.slider li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70vh;
+  min-height: 800px;
+  background-repeat: no-repeat;
+  transition: clip 0.7s ease-in-out, z-index 0s 0.7s;
+  clip: rect(0, 100vw, 100vh, 100vw);
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.slider li:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background-image: url("https://i.postimg.cc/02zcww6c/slider-shape.png");
+  background-size: 100% 100%;
+  transition-delay: 1s;
+  transform: rotate(-90deg);
+  z-index: 1;
+}
+
+.slider li:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background-image: url("https://i.postimg.cc/KjKbwDfR/slider-shape-2.png");
+  background-size: 100% 100%;
+  transform: rotate(360deg);
+  transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+  z-index: 1;
+  background-position: center left;
+}
+
+.slider li:nth-child(1) {
+  background: linear-gradient(
+      to right,
+      rgba(1, 1, 1, 1) 10%,
+      rgba(1, 1, 1, 0.8) 51%,
+      rgba(1, 1, 1, 0.2) 100%
+    ),
+    url("../images/Vallée_de_l\'Ubaye_Rafting.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.slider li:nth-child(2) {
+  background: linear-gradient(
+      to right,
+      rgba(1, 1, 1, 1) 10%,
+      rgba(1, 1, 1, 0.8) 51%,
+      rgba(1, 1, 1, 0.2) 100%
+    ),
+    url("../images/rafting2.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.slider li:nth-child(3) {
+  background: linear-gradient(
+      to right,
+      rgba(1, 1, 1, 1) 10%,
+      rgba(1, 1, 1, 0.8) 51%,
+      rgba(1, 1, 1, 0.2) 100%
+    ),
+    url("../images/rafting5.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.slider article {
+  width: 50vw;
+  margin-top: 4rem;
+  color: var(--primary-color);
+  z-index: 11;
+}
+
+.slider h3 {
+  font-size: 3.5em;
+  color:var(--accent2-color)
+
+}
+.slider h3 + p {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: 300;
+
+}
+
+.slider h3,
+.slider h3 + p,
+.slider p + .btn,
+li:after {
+  opacity: 0;
+  transition: opacity 0.7s 0s, transform 0.5s 0.2s;
+  transform: translate3d(0, 50%, 0);
+}
+
+li.current h3,
+li.current h3 + p,
+li.current p + .btn,
+li.current:after {
+  opacity: 1;
+  transition-delay: 0.5ss;
+  transform: translate3d(0, 0, 0);
+}
+
+.slider li:before {
+  transition: 0.5s;
+  top: -250px !important;
+}
+
+li.current:before {
+  transition-delay: 0.5s;
+  transform: rotate(-90deg);
+  top: -20px !important;
+}
+
+li.current {
+  z-index: 1;
+  clip: rect(0, 100vw, 100vh, 0);
+}
+
+li.prev {
+  clip: rect(0, 0, 100vh, 0);
+}
+
+.slider aside {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  text-align: center;
+  z-index: 10;
+}
+
+.slider aside a {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: var(--primary-color);
+  margin: 0 0.2rem;
+  transition: transform 0.3s;
+}
+
+.slider em {
+  background: var(--primary-color);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+a.current_dot {
+  transform: scale(1.8);
+  background: var(--accent1-color) !important;
 }

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Baja Rafting | See what we are offering to you</title>
+    <meta
+      name="description"
+      content="Trips: A view of our offer to Conquer wild rivers with Baja Rafting."
+   >
+    <meta name="author" content="David Ochoa">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/rafting.css">
+    <!--
+    "https://app.moqups.com/Wtx2Yfd9y6vDun7cbRpSWF1MDERB5p0C/view/page/ad12de680?ui=0"
+    -->
+  </head>
+
+  <body>
+    <header>
+      <!-- Logo -->
+      <a id="logo_link" href="#">
+        <img class="logo" src="images/logo.png" alt="Baja Rafting">
+      </a>
+      <!-- Navbar -->
+      <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="trips.html">Trips</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </header>
+    <!-- Main content -->
+    <main>
+      <!-- HERO -->
+      <div class="hero_contact">
+        <h1>Baja Rafting</h1>
+      </div>
+      <section class="call_to_act">
+        <h2>Reach Our Team</h2>
+        <p>
+          Challenge your limits and live a unique experience with Baja Rafting.
+          <BR>
+          Our seasoned guides ensure your safety and maximize your enjoyment, empowering you to conquer each rapid with confidence.
+        </p>
+        <br>
+        <!--
+
+          CALL TO ACTION
+
+        -->
+        <div class="button-wrapper-cta">
+          <a class="button-cta cta-button" href="contact.html">All start contacting us</a>
+        </div>
+        <!--
+          
+          END CALL TO ACTION
+
+        -->
+      </section>
+      <br>
+      <section class="trips">
+        <!--
+          
+          START TRIPS
+
+        -->
+        <div class="verbosity">
+          <h2>Ready to embark on an unforgettable adventure?</h2>
+          <br>
+              <p>Select your trip from the carousel and dive deeper into the details. 
+                Let Baja Rafting be your trusted companion as you navigate the 
+                exciting rapids and create memories that will last a lifetime!</p>
+            </div>
+        </div>
+        <br>
+        <div class="trips_object">
+          <section class="slider">
+            <ul>
+                <li>
+                    <article class="center-y padding_2x" id="Estes">
+                        <h3 class="big title">Rafting in Estes Park</h3>
+                        <p>Plunge into the Poudre or Colorado Rivers for an day or afternoon 
+                          of thrilling drops, bumps and fun! Several whitewater raft companies 
+                          service Estes Park, although river access is out of the area. Once 
+                          there, you'll get outfitted with the necessary gear and safety 
+                          equipment. Then hit the river! The Poudre and Colorado offer several 
+                          classes of whitewater excitement, from  beginners to more seasoned rafters. </p>	
+                        <a href="contact.html" class="btn btn_3">Variety for Every ThrillSeeker</a>
+                    </article>
+                </li>
+                <li>
+                    <article class="center-y padding_2x" id="Westwater">
+                        <h3 class="big title">Westwater Canyon</h3>
+                        <p>With its combination of colorful stone walls and serious whitewater, 
+                          Westwater Canyon is often compared to the Grand Canyon, and it should 
+                          be at the top of every rafter’s bucket list. </p>	
+                        <a href="contact.html" class="btn btn_3">Ignite Your Inner Adventurer</a>
+                    </article>
+                </li>
+              <li>
+                    <article class="center-y padding_2x" id="Drowsy">
+                        <h3 class="big title">Drowsy Water Ranch</h3>
+                        <p>Dude Ranch. All inclusive package vacations primarily weekly. All meals, horseback riding, daily maid service, kids programs, evening entertainment, fall hunting camps included.</p>	
+                        <a href="contact.html" class="btn btn_3">Unforgettable Immersions in Nature</a>
+                    </article>
+                </li>
+                <aside>
+                    <a href="#Estes"></a>
+                    <a href="#Westwater"></a>
+                  <a href="#Drowsy"></a>
+                </aside>
+            </ul>
+        </section>
+        </div>
+        <!--
+          
+          END CALL TO ACTION & TRIPS
+
+        -->
+      </section>
+    </main>
+    <footer>
+      <p>©️2024 Baja Rafting 🚣🌞 David Ochoa | WDD 130</p>
+      <strong>
+      <a href="https://app.moqups.com/Wtx2Yfd9y6vDun7cbRpSWF1MDERB5p0C/view/page/ad12de680"> Wireframe</a>
+    </strong>
+      <nav class="social_links">
+        <a href="https://facebook.com">
+          <img src="images/facebook_icon.png" alt="Facebook">
+        </a>
+        <a href="https://twitter.com">
+          <img src="images/twitter_icon.png" alt="Twitter">
+        </a>
+        <a href="https://instagram.com">
+          <img src="images/instagram_icon.png" alt="Instagram">
+        </a>
+      </nav>
+    </footer>
+
+<script>
+  {
+class SliderClip {
+  constructor(el) {
+    this.el = el;
+    this.Slides = Array.from(this.el.querySelectorAll('li'));
+    this.Nav = Array.from(this.el.querySelectorAll('aside a'));
+    this.totalSlides = this.Slides.length;
+    this.current = 0;
+    this.autoPlay = true; //true or false
+    this.timeTrans = 3000; //transition time in milliseconds
+    this.IndexElements = [];
+
+    for (let i = 0; i < this.totalSlides; i++) {
+      this.IndexElements.push(i);
+    }
+
+    this.setCurret();
+    this.initEvents();
+  }
+  setCurret() {
+    this.Slides[this.current].classList.add('current');
+    this.Nav[this.current].classList.add('current_dot');
+  }
+  initEvents() {
+    const self = this;
+
+    this.Nav.forEach(dot => {
+      dot.addEventListener('click', ele => {
+        ele.preventDefault();
+        this.changeSlide(this.Nav.indexOf(dot));
+      });
+    });
+
+    this.el.addEventListener('mouseenter', () => self.autoPlay = false);
+    this.el.addEventListener('mouseleave', () => self.autoPlay = true);
+
+    setInterval(function () {
+      if (self.autoPlay) {
+        self.current = self.current < self.Slides.length - 1 ? self.current + 1 : 0;
+        self.changeSlide(self.current);
+      }
+    }, this.timeTrans);
+
+  }
+  changeSlide(index) {
+
+    this.Nav.forEach(allDot => allDot.classList.remove('current_dot'));
+
+    this.Slides.forEach(allSlides => allSlides.classList.remove('prev', 'current'));
+
+    const getAllPrev = value => value < index;
+
+    const prevElements = this.IndexElements.filter(getAllPrev);
+
+    prevElements.forEach(indexPrevEle => this.Slides[indexPrevEle].classList.add('prev'));
+
+    this.Slides[index].classList.add('current');
+    this.Nav[index].classList.add('current_dot');
+  }}
+
+
+const slider = new SliderClip(document.querySelector('.slider'));
+}
+</script>
+  </body>
+</html>
