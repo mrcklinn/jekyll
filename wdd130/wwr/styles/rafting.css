@@ -134,7 +134,7 @@ Hero properties
   top: 0;
   width: 100%;
   font-family: var(--heading-font);
-  color: var(--primary-color);
+  color: #FFF;/*var(--primary-color);*/
   text-shadow: 0px 0px 3px var(--nav-hover-background-color), 0px 0px 15px var(--accent1-color), 0px 0px 40px var(--accent3-color);
   opacity: 1;
   display: flex;
