@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to HTML</title>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.6/dist/purify.min.js"></script>
+</head>
+
+<body>
+    <div id="html-content"></div>
+    <script>
+        fetch('./test.md').then(function (response) {
+            if (response.ok) {
+                return response.text();
+            }
+            throw response;
+        }).then(function (markdownContent) {
+
+        // Convert Markdown to HTML using Showdown
+        const converter = new showdown.Converter();
+        const htmlContent = converter.makeHtml(markdownContent);
+
+        // Sanitize the HTML output using DOMPurify
+        const sanitizedHtml = DOMPurify.sanitize(htmlContent);
+
+        // Display the sanitized HTML content
+        document.getElementById('html-content').innerHTML = sanitizedHtml;
+        document.getElementById('markdown-content').innerText = "";
+        });
+        async function data_loading() {
+
+        };
+    </script>
+</body>
+
+</html>

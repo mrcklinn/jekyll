@@ -1,0 +1,46 @@
+{
+   "item_0": {
+      "name": "Math_mad_notes",
+      "file": "math_mad_notes.json",
+      "group": "modal"
+   },
+   "item_1": {
+      "name": "Analytics_notes",
+      "file": "analytics_notes.json",
+      "group": "modal"
+   },
+   "item_2": {
+      "name": "Coding_notes",
+      "file": "coding_notes.json",
+      "group": "modal"
+   },
+   "item_3": {
+      "name": "Portfolio",
+      "file": "portfolio.json",
+      "group": "modal"
+   },
+   "item_4": {
+      "group": "spacer"
+   },
+   "item_5": {
+      "group": "link",
+      "name": "Medium",
+      "href": "https://david-ok.medium.com/"
+   },
+   "item_6": {
+      "group": "link",
+      "name": "Linkedin",
+      "href": "https://Linkedin.com/in/david-ok"
+   },
+   "item_7": {
+      "group": "spacer"
+   },
+   "item_8": {
+      "group": "link",
+      "name": "Github",
+      "href": "https://github.com/devicemxl/"
+   },
+   "item_9": {
+      "group": "spacer"
+   }
+}
