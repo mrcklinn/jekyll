@@ -1,5 +1,948 @@
----
-layout: home
----
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Set title and description in config.yml -->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>David Ok</title>
+</head>
+
+<body>
+    <!-- LATERAL BAR STARTING -->
+    <div id="nav-bar">
+        <input id="nav-toggle" type="checkbox" />
+        <div id="nav-header">
+            <a id="nav-title" href="#" target="_blank">
+                d<i class="fab fa-codepen"> → Ok</i></a>
+            <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+            <hr />
+        </div>
+        <div id="nav-content">
+            <!-- Automatically generated with JS/JSON -->
+        </div>
+        <input id="nav-footer-toggle" type="checkbox" />
+        <div id="nav-footer">
+            <div id="nav-footer-heading">
+                <div id="nav-footer-avatar">
+                    <img src="https://avatars.githubusercontent.com/u/19245829?v=4" title="me">
+                </div>
+                <div id="nav-footer-titlebox">
+                    <span id="nav-footer-title">David Ochoa</span>
+                    <span id="nav-footer-subtitle">a Mad Math Candidate</span>
+                </div>
+                <label for="nav-footer-toggle">
+                    <i class="fas fa-caret-up"></i>
+                </label>
+            </div>
+            <div id="nav-footer-content">
+                <Lorem>ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</Lorem>
+            </div>
+        </div>
+    </div>
+
+    <script>// Define the JSON file URL
+        const myRequest = "./data/json/menu_items.json";
+        // Fetch the JSON file and process the response
+        fetch(myRequest).then(function (response) {
+            if (response.ok) {
+                return response.text();
+            }
+            return "";
+        }).then(function (jsonContent) {
+            // Store the JSON response in a variable
+            const menuItems = JSON.parse(jsonContent);
+            // Call the initialization function with the loaded data
+            const { node_root, fragment } = initializeNavBar();
+            // Iterate through the menu items and create corresponding elements
+            for (let k in menuItems) {
+                let node_root = document.getElementById('nav-content');
+                let kind = menuItems[k]['group'];
+                let fragment = document.createDocumentFragment();
+                if (kind === "link") {
+                    createLinkItem(node_root, fragment, menuItems, k);
+                } else if (kind === "spacer") {
+                    createSpacerItem(node_root, fragment);
+                } else if (kind === "modal") {
+                    createModalItem(node_root, fragment, menuItems, k);
+                }
+            }
+        });
+        
+        /**
+         * Initializes the navigation bar by creating a root node and a fragment.
+         * 
+         * @returns {object} - Contains the root node and the document fragment.
+         */
+        function initializeNavBar() {
+            let node_root = document.getElementById('nav-content');
+            let fragment = document.createDocumentFragment();
+            
+            // Create and append the highlight div
+            let highlight_div = fragment.appendChild(document.createElement("div"));
+            highlight_div.className = 'nav-content-highlight';
+            node_root.append(fragment);
+            
+            return { node_root, fragment };
+        }
+        
+        /**
+         * Creates and appends a spacer item (hr element) to the parent node.
+         * 
+         * @param {HTMLElement} parent - The parent node to append the spacer item to.
+         * @param {DocumentFragment} fragment - The document fragment to append the spacer item to.
+         */
+        function createSpacerItem(parent, fragment) {
+            let nav_button = fragment.appendChild(document.createElement("hr"));
+            parent.append(nav_button);
+        }
+        
+        /**
+         * Creates and appends a link item to the parent node.
+         * 
+         * @param {HTMLElement} parent - The parent node to append the link item to.
+         * @param {DocumentFragment} fragment - The document fragment to append the link item to.
+         * @param {object} menuItems - The JSON object containing menu items.
+         * @param {string} k - The key of the current menu item.
+         */
+        function createLinkItem(parent, fragment, menuItems, k) {
+            let nav_button = fragment.appendChild(document.createElement("div"));
+            nav_button.className = 'nav-button';
+            nav_button.setAttribute('onclick', "location.href = '" + menuItems[k]['href'] + "'");
+            
+            let fas_fa = nav_button.appendChild(document.createElement("i"));
+            fas_fa.className = "fas fa-palette";
+            fas_fa.textContent = "";
+            
+            let fas_fa_span = nav_button.appendChild(document.createElement("a"));
+            fas_fa_span.className = "fas fa-palette";
+            fas_fa_span.textContent = menuItems[k]['name'];
+            fas_fa_span.href = menuItems[k]['href'];
+            
+            parent.append(nav_button);
+            //console.log(nav_button);
+        }
+        
+        /**
+         * Creates and appends a modal item to the parent node.
+         * 
+         * @param {HTMLElement} parent - The parent node to append the modal item to.
+         * @param {DocumentFragment} fragment - The document fragment to append the modal item to.
+         * @param {object} menuItems - The JSON object containing menu items.
+         * @param {string} k - The key of the current menu item.
+         */
+        function createModalItem(parent, fragment, menuItems, k) {
+            let nav_button = fragment.appendChild(document.createElement("div"));
+            nav_button.className = 'nav-button';
+            nav_button.setAttribute('modal_open', menuItems[k]['file'].split(".")[0]);
+            nav_button.setAttribute('onclick', 'showing_modal(this)');
+            
+            let fas_fa = nav_button.appendChild(document.createElement("a"));
+            fas_fa.className = "fas fa-palette";
+            fas_fa.textContent = "";
+            
+            let fas_fa_span = nav_button.appendChild(document.createElement("span"));
+            fas_fa_span.textContent = menuItems[k]['name'];
+            
+            parent.append(nav_button);
+        }
+        
+        /**
+         * Handles showing the modal when a modal item is clicked.
+         * 
+         * @param {HTMLElement} element - The element that was clicked.
+         */
+        function showing_modal(element) {
+            // Your modal handling code here
+            //console.log('Showing modal for:', element.getAttribute('modal_open'));
+        }
+        
+    </script>
+    <!-- LATERAL BAR ENDING -->
+    <!-- WORKSPACE STARTING -->
+    <!-- 
+    MODAL INPUTS
+    ============
+    title: ?
+    content: load HTML? JSON?
+    footer: Action buttons: JSON?
+
+    Riot Tag
+    -->
+    <div class="modal1 micromodal-slide" id="math_mad_notes" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" id="draggableElement" draggable="true">
+                <header class="modal__header">
+                    <button class="modal__close" data-micromodal-close></button>
+                    <div class="modal__title">
+                        <span id="modal-1-title">
+                            Mad Math Notes
+                        </span>
+                    </div>
+                </header>
+                <main class="modal__content" id="modal-1-content">
+                    <p>
+                        Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself.
+                        Also, <code>esc</code> to close modal.
+                    </p>
+                </main>
+                <footer class="modal__footer">
+                    <div class="modal__footer_button_row">
+                        <button class="modal__btn modal__btn-primary">Continue</button>
+                        <button class="modal__btn" data-micromodal-close>Close</button>
+                    </div>
+
+                    <div class="modal__footer_msg">
+                        fuck you
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <!-- WORKSPACE ENDING -->
+    <style>
+/**************************
+  Basic Modal Styles
+***************************/
+
+        .modal,
+        .modal__title {
+            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+        }
+
+        .modal__overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--hover_bg);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal__container {
+            background-color: var(--navbar-light-primary);
+            padding: 30px;
+
+            border-radius: 15px;
+            overflow-y: auto;
+            box-sizing: border-box;
+
+            margin-left: 250px;
+            max-width: calc(100vw - 400px);
+            max-height: 80vh;
+        }
+
+        .modal__header {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: var(--navbar-dark-secondary);
+
+        }
+
+        .modal__title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 400;
+            font-size: 1.25rem;
+            line-height: 1.25;
+            color: var(--background);
+            box-sizing: border-box;
+            padding-right: 30px;
+        }
+
+        .modal__close {
+            background: var(--red);
+            color: var(--navbar-dark-secondary);
+
+            border: none;
+            width: 15px;
+            height: 15px;
+            border-width: 0;
+            border-color: var(--navbar-dark-secondary);
+            border-radius: 50%;
+            border-style: hidden;
+            padding: 0;
+            cursor: pointer;
+            outline: var(--navbar-dark-secondary);
+
+        }
+
+        .modal__header .modal__close:before {
+            content: "\2715";
+        }
+
+        .modal__content {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            color: var(--navbar-dark-primary);
+        }
+
+        .modal__footer_button_row {
+            padding: 5px;
+        }
+
+        .modal__btn {
+            font-size: .875rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            border-radius: .25rem;
+            border-style: none;
+            border-width: 0;
+            cursor: pointer;
+            -webkit-appearance: button;
+            text-transform: none;
+            overflow: visible;
+            line-height: 1.15;
+            margin: 0;
+            will-change: transform;
+
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            transition: -webkit-transform .25s ease-out;
+            transition: transform .25s ease-out;
+            transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+
+            background-color: var(--navbar-light-secondary);
+            color: var(--navbar-dark-primary);
+
+        }
+
+        .modal__btn:focus,
+        .modal__btn:hover {
+            /*
+            -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+            */
+            background-color: var(--modal-dark-primary);
+            color: var(--background);
+        }
+
+        .modal__btn-primary {
+            background-color: var(--modal-dark-primary);
+            color: var(--background);
+        }
+
+
+        .modal__btn-primary:hover {
+
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            background-color: var(--red);
+            color: var(--background);
+        }
+
+
+        .modal__footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+            background-color: transparent !important;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+        }
+
+/**************************
+  Demo Animation Style
+***************************/
+        @keyframes mmfadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes mmfadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes mmslideIn {
+            from {
+                transform: translateY(15%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes mmslideOut {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-10%);
+            }
+        }
+
+        .micromodal-slide {
+            display: none;
+        }
+
+        .micromodal-slide.is-open {
+            display: block;
+        }
+
+        .micromodal-slide[aria-hidden="false"] .modal__overlay {
+            animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
+
+        .micromodal-slide[aria-hidden="false"] .modal__container {
+            animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+        }
+
+        .micromodal-slide[aria-hidden="true"] .modal__overlay {
+            animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+        }
+
+        .micromodal-slide[aria-hidden="true"] .modal__container {
+            animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+        }
+
+        .micromodal-slide .modal__container,
+        .micromodal-slide .modal__overlay {
+            will-change: transform;
+        }
+    </style>
+    <style>
+        :root {
+
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            --background: #cfecfe;
+            --navbar-width: 256px;
+            --navbar-width-min: 80px;
+            --hover_bg: #09213d9c;
+            --navbar-dark-primary: #18283b;
+            --navbar-dark-secondary: #2c3e50;
+            --navbar-light-primary: #f5f6fa;
+            --navbar-light-secondary: #8392a5;
+            --modal-dark-primary: #0c3897;
+            --red: #fc365a;
+        }
+
+        html,
+        body {
+            margin: 0;
+            background: var(--background);
+        }
+
+        #nav-toggle:checked~#nav-header {
+            width: calc(var(--navbar-width-min) - 16px);
+        }
+
+        #nav-toggle:checked~#nav-content,
+        #nav-toggle:checked~#nav-footer {
+            width: var(--navbar-width-min);
+        }
+
+        #nav-toggle:checked~#nav-header #nav-title {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.1s;
+        }
+
+        #nav-toggle:checked~#nav-header label[for="nav-toggle"] {
+            left: calc(50% - 8px);
+            transform: translate(-50%);
+        }
+
+        #nav-toggle:checked~#nav-header #nav-toggle-burger {
+            background: var(--navbar-light-primary);
+        }
+
+        #nav-toggle:checked~#nav-header #nav-toggle-burger:before,
+        #nav-toggle:checked~#nav-header #nav-toggle-burger::after {
+            width: 16px;
+            background: var(--navbar-light-secondary);
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        #nav-toggle:checked~#nav-content .nav-button span {
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+        #nav-toggle:checked~#nav-content .nav-button .fas {
+            min-width: calc(100% - 16px);
+        }
+
+        #nav-toggle:checked~#nav-footer #nav-footer-avatar {
+            margin-left: 0;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        #nav-toggle:checked~#nav-footer #nav-footer-titlebox,
+        #nav-toggle:checked~#nav-footer label[for="nav-footer-toggle"] {
+            opacity: 0;
+            transition: opacity 0.1s;
+            pointer-events: none;
+        }
+
+        #nav-bar {
+            position: absolute;
+            left: 1vw;
+            top: 1vw;
+            height: calc(100% - 2vw);
+            background: var(--navbar-dark-primary);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            color: var(--navbar-light-primary);
+            overflow: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        #nav-bar hr {
+            margin: 0;
+            position: relative;
+            left: 16px;
+            width: calc(100% - 32px);
+            border: none;
+            border-top: solid 1px var(--navbar-dark-secondary);
+        }
+
+        #nav-bar a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        #nav-bar input[type="checkbox"] {
+            display: none;
+        }
+
+        #nav-header {
+            position: relative;
+            width: var(--navbar-width);
+            left: 16px;
+            width: calc(var(--navbar-width) - 16px);
+            min-height: 80px;
+            background: var(--navbar-dark-primary);
+            border-radius: 16px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            transition: width 0.2s;
+        }
+
+        #nav-header hr {
+            position: absolute;
+            bottom: 0;
+        }
+
+        #nav-title {
+            font-size: 1.5rem;
+            transition: opacity 1s;
+        }
+
+        label[for="nav-toggle"] {
+            position: absolute;
+            right: 0;
+            width: 3rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        #nav-toggle-burger {
+            position: relative;
+            width: 16px;
+            height: 2px;
+            background: var(--navbar-dark-primary);
+            border-radius: 99px;
+            transition: background 0.2s;
+        }
+
+        #nav-toggle-burger:before,
+        #nav-toggle-burger:after {
+            content: "";
+            position: absolute;
+            top: -6px;
+            width: 10px;
+            height: 2px;
+            background: var(--navbar-light-primary);
+            border-radius: 99px;
+            transform: translate(2px, 8px) rotate(30deg);
+            transition: 0.2s;
+        }
+
+        #nav-toggle-burger:after {
+            top: 6px;
+            transform: translate(2px, -8px) rotate(-30deg);
+        }
+
+        #nav-content {
+            margin: -16px 0;
+            padding: 16px 0;
+            position: relative;
+            flex: 1;
+            width: var(--navbar-width);
+            background: var(--navbar-dark-primary);
+            box-shadow: 0 0 0 16px var(--navbar-dark-primary);
+            direction: rtl;
+            overflow-x: hidden;
+            transition: width 0.2s;
+        }
+
+        #nav-content::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        #nav-content::-webkit-scrollbar-thumb {
+            border-radius: 99px;
+            background-color: var(--red);
+        }
+
+        #nav-content::-webkit-scrollbar-button {
+            height: 16px;
+        }
+
+        #nav-content-highlight {
+            position: absolute;
+            left: 16px;
+            top: -70px;
+            width: calc(100% - 16px);
+            height: 54px;
+            background: var(--background);
+            background-attachment: fixed;
+            border-radius: 16px 0 0 16px;
+            transition: top 0.2s;
+        }
+
+        #nav-content-highlight:before,
+        #nav-content-highlight:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 100%;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            box-shadow: 16px 16px var(--background);
+        }
+
+        #nav-content-highlight:after {
+            top: 100%;
+            box-shadow: 16px -16px var(--background);
+        }
+
+        .nav-button {
+            position: relative;
+            margin-left: 16px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            color: var(--navbar-light-secondary);
+            direction: ltr;
+            cursor: pointer;
+            z-index: 1;
+            transition: color 0.2s;
+        }
+
+        .nav-button span {
+            transition: opacity 1s;
+        }
+
+        .nav-button .fas {
+            transition: min-width 0.2s;
+        }
+
+        .nav-button:hover {
+            color: var(--navbar-dark-primary);
+            background-color: var(--background);
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-color: transparent;
+            transition: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+            box-shadow: rgb(119, 129, 138) 0px 0px 5px 0px inset, rgba(184, 186, 196, 0.5) -0px -0px 6px 0px inset;
+        }
+
+
+        #nav-bar .fas {
+            min-width: 3rem;
+            text-align: center;
+        }
+
+        #nav-footer {
+            position: relative;
+            width: var(--navbar-width);
+            height: 54px;
+            background: var(--navbar-dark-secondary);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        #nav-footer-heading {
+            position: relative;
+            width: 100%;
+            height: 54px;
+            display: flex;
+            align-items: center;
+        }
+
+        #nav-footer-avatar {
+            position: relative;
+            margin: 11px 0 11px 11px;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            transform: translate(0);
+            transition: 0.2s;
+        }
+
+        #nav-footer-avatar img {
+            height: 100%;
+        }
+
+        #nav-footer-titlebox {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: space-around;
+            align-items: flex-start;
+            /**/
+            position: relative;
+            margin-left: 16px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            min-width: 150px;
+            width: -moz-fit-content;
+            width: fit-content;
+            transition: opacity 1s;
+        }
+
+        #nav-footer-title {
+        
+            font-size: 0.90rem;
+        }
+
+        #nav-footer-subtitle {
+            color: var(--navbar-light-secondary);
+            font-size: 0.725rem;
+            font-style: italic;
+        }
+
+        #nav-toggle:not(:checked)~#nav-footer-toggle:checked+#nav-footer {
+            height: 30%;
+            min-height: 54px;
+        }
+
+        #nav-toggle:not(:checked)~#nav-footer-toggle:checked+#nav-footer label[for="nav-footer-toggle"] {
+            transform: rotate(180deg);
+        }
+
+        label[for="nav-footer-toggle"] {
+            position: absolute;
+            right: 0;
+            width: 3rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        #nav-footer-content {
+            margin: 0 16px 16px 16px;
+            border-top: solid 1px var(--navbar-light-secondary);
+            padding: 16px 0;
+            color: var(--navbar-light-secondary);
+            font-size: 0.8rem;
+            overflow: auto;
+        }
+
+        #nav-footer-content::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        #nav-footer-content::-webkit-scrollbar-thumb {
+            border-radius: 99px;
+            background-color: var(--red);
+        }
+    </style>
+
+
+    <script>
+        !function (e, o) { "object" == typeof exports && "undefined" != typeof module ? module.exports = o() : "function" == typeof define && define.amd ? define(o) : e.MicroModal = o() }(this, function () {
+            "use strict"
+            var e = function (e, o) { if (!(e instanceof o)) throw new TypeError("Cannot call a class as a function") }, o = function () {
+                function e(e, o) {
+                    for (var t = 0; t < o.length; t++) {
+                        var i = o[t]
+                        i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(e, i.key, i)
+                    }
+                } return function (o, t, i) { return t && e(o.prototype, t), i && e(o, i), o }
+            }(), t = function (e) {
+                if (Array.isArray(e)) {
+                    for (var o = 0, t = Array(e.length); o < e.length; o++)t[o] = e[o]
+                    return t
+                } return Array.from(e)
+            }
+            return function () {
+                var i = ["a[href]", "area[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "button:not([disabled]):not([aria-hidden])", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])'], n = function () {
+                    function n(o) {
+                        var i = o.targetModal, a = o.triggers, r = void 0 === a ? [] : a, s = o.onShow, l = void 0 === s ? function () { } : s, c = o.onClose, d = void 0 === c ? function () { } : c, u = o.openTrigger, f = void 0 === u ? "data-micromodal-trigger" : u, h = o.closeTrigger, v = void 0 === h ? "data-micromodal-close" : h, g = o.disableScroll, m = void 0 !== g && g, b = o.disableFocus, y = void 0 !== b && b, w = o.awaitCloseAnimation, k = void 0 !== w && w, p = o.debugMode, E = void 0 !== p && p
+                        e(this, n), this.modal = document.getElementById(i), this.config = { debugMode: E, disableScroll: m, openTrigger: f, closeTrigger: v, onShow: l, onClose: d, awaitCloseAnimation: k, disableFocus: y }, r.length > 0 && this.registerTriggers.apply(this, t(r)), this.onClick = this.onClick.bind(this), this.onKeydown = this.onKeydown.bind(this)
+                    } return o(n, [{
+                        key: "registerTriggers", value: function () {
+                            for (var e = this, o = arguments.length, t = Array(o), i = 0; i < o; i++)t[i] = arguments[i]
+                            t.forEach(function (o) { o.addEventListener("click", function () { return e.showModal() }) })
+                        }
+                    }, { key: "showModal", value: function () { this.activeElement = document.activeElement, this.modal.setAttribute("aria-hidden", "false"), this.modal.classList.add("is-open"), this.setFocusToFirstNode(), this.scrollBehaviour("disable"), this.addEventListeners(), this.config.onShow(this.modal) } }, {
+                        key: "closeModal", value: function () {
+                            var e = this.modal
+                            this.modal.setAttribute("aria-hidden", "true"), this.removeEventListeners(), this.scrollBehaviour("enable"), this.activeElement.focus(), this.config.onClose(this.modal), this.config.awaitCloseAnimation ? this.modal.addEventListener("animationend", function o() { e.classList.remove("is-open"), e.removeEventListener("animationend", o, !1) }, !1) : e.classList.remove("is-open")
+                        }
+                    }, {
+                        key: "scrollBehaviour", value: function (e) {
+                            if (this.config.disableScroll) {
+                                var o = document.querySelector("body")
+                                switch (e) {
+                                    case "enable": Object.assign(o.style, { overflow: "initial", height: "initial" })
+                                        break
+                                    case "disable": Object.assign(o.style, { overflow: "hidden", height: "100vh" })
+                                }
+                            }
+                        }
+                    }, { key: "addEventListeners", value: function () { this.modal.addEventListener("touchstart", this.onClick), this.modal.addEventListener("click", this.onClick), document.addEventListener("keydown", this.onKeydown) } }, { key: "removeEventListeners", value: function () { this.modal.removeEventListener("touchstart", this.onClick), this.modal.removeEventListener("click", this.onClick), document.removeEventListener("keydown", this.onKeydown) } }, { key: "onClick", value: function (e) { e.target.hasAttribute(this.config.closeTrigger) && (this.closeModal(), e.preventDefault()) } }, { key: "onKeydown", value: function (e) { 27 === e.keyCode && this.closeModal(e), 9 === e.keyCode && this.maintainFocus(e) } }, {
+                        key: "getFocusableNodes", value: function () {
+                            var e = this.modal.querySelectorAll(i)
+                            return Object.keys(e).map(function (o) { return e[o] })
+                        }
+                    }, {
+                        key: "setFocusToFirstNode", value: function () {
+                            if (!this.config.disableFocus) {
+                                var e = this.getFocusableNodes()
+                                e.length && e[0].focus()
+                            }
+                        }
+                    }, {
+                        key: "maintainFocus", value: function (e) {
+                            var o = this.getFocusableNodes()
+                            if (this.modal.contains(document.activeElement)) {
+                                var t = o.indexOf(document.activeElement)
+                                e.shiftKey && 0 === t && (o[o.length - 1].focus(), e.preventDefault()), e.shiftKey || t !== o.length - 1 || (o[0].focus(), e.preventDefault())
+                            } else o[0].focus()
+                        }
+                    }]), n
+                }(), a = null, r = function (e, o) {
+                    var t = []
+                    return e.forEach(function (e) {
+                        var i = e.attributes[o].value
+                        void 0 === t[i] && (t[i] = []), t[i].push(e)
+                    }), t
+                }, s = function (e) { if (!document.getElementById(e)) return console.warn("MicroModal v0.3.1: ❗Seems like you have missed %c'" + e + "'", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "ID somewhere in your code. Refer example below to resolve it."), console.warn("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", '<div class="modal" id="' + e + '"></div>'), !1 }, l = function (e) { if (e.length <= 0) return console.warn("MicroModal v0.3.1: ❗Please specify at least one %c'micromodal-trigger'", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "data attribute."), console.warn("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", '<a href="#" data-micromodal-trigger="my-modal"></a>'), !1 }, c = function (e, o) {
+                    if (l(e), !o) return !0
+                    for (var t in o) s(t)
+                    return !0
+                }
+                return {
+                    init: function (e) {
+                        var o = Object.assign({}, { openTrigger: "data-micromodal-trigger" }, e), i = [].concat(t(document.querySelectorAll("[" + o.openTrigger + "]"))), a = r(i, o.openTrigger)
+                        if (!0 !== o.debugMode || !1 !== c(i, a)) for (var s in a) {
+                            var l = a[s]
+                            o.targetModal = s, o.triggers = [].concat(t(l)), new n(o)
+                        }
+                    }, show: function (e, o) {
+                        var t = o || {}
+                        t.targetModal = e, !0 === t.debugMode && !1 === s(e) || (a = new n(t), a.showModal())
+                    }, close: function () { a.closeModal() }
+                }
+            }()
+        })
+
+    </script>
+    <script>
+
+        try {
+            MicroModal.init();
+        }
+        catch (e) {
+            console.log('micromodal error: ', e);
+        }
+
+
+        /*        MicroModal.init({
+                    onShow: modal => console.info(`${modal.id} is shown`), // [1]
+                    onClose: modal => console.info(`${modal.id} is hidden`), // [2]
+                    openTrigger: 'data-custom-open', // [3]
+                    closeTrigger: 'data-custom-close', // [4]
+                    disableScroll: true, // [5]
+                    disableFocus: false, // [6]
+                    awaitCloseAnimation: false, // [7]
+                    debugMode: true // [8]
+                });
+        */
+
+        function showing_modal(object) {
+            var this_modal = object.getAttribute('modal_open');
+            MicroModal.show(this_modal);
+        };
+
+
+        function showing_child_modal(object) {
+            second_child = object.getElementsByTagName('span')[0]
+            var this_modal = second_child.getAttribute('modal_open');
+            MicroModal.show(this_modal);
+        };
+    </script>
+</body>
+
+</html>
