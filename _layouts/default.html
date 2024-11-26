@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
-
-  {% include head.html %}
-
-  <body>
-
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/dark-theme.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/control-panel.css' | relative_url }}">
+    <title>{{ site.title }}</title>
+</head>
+<body>
     {% include header.html %}
-
-    <div>
-      {{ content }}
-    </div>
-
+    {% include control-panel.html %}
+    {{ content }}
     {% include footer.html %}
-
-  </body>
-
-</html>
+    <script src="{{ '/assets/theme.js' | relative_url }}"></script>
+</body>
+</html> 
