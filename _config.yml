@@ -1,10 +1,10 @@
 title: Mrcme.Inc
 description: Inspired Jekyll Theme
-baseurl: /swiss
+baseurl: /
 url: 'https://mrcklinn.github.io/'
 github_repo: jekyll
 github_username: mrcklinn
 social_link: twitter
 social_username: drcklinn
-theme_color: black
-markdown: kramdown
+theme_color: gray
+markdown: markdown
